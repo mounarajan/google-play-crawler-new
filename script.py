@@ -49,6 +49,9 @@ def extractUrls(url):
 				print li 
 				f1.write(li+"\n")
 	num = 5
+	f1.close()
+	f2.close()
+	f5.close()
 	extractUrls1("https://play.google.com/store/apps?start={0}&num=5".format(num),num)
 
 def extractUrls1(url,num):
@@ -80,6 +83,11 @@ def extractUrls1(url,num):
 				else:
 					print li 
 					f2.write(li+"\n")
+
+	f1.close()
+	f2.close()
+	f5.close()
+
 	if re.search(r'(?mis)href\=\"[^\?]*\?start\=(\d+)\"\srel\=\"c',data):
 		check = re.findall(r'(?mis)href\=\"[^\?]*\?start\=(\d+)\"\srel\=\"c',data)[0]
 		print "printiing"
@@ -91,6 +99,8 @@ def extractUrls1(url,num):
 			extractUrls1("https://play.google.com/store/apps?start={0}&num=5".format(num),num)
 		else:
 			pass
+
+	
 
 def assigneCategory():
 	f2 = open('cat_links1.txt','r')
@@ -123,6 +133,11 @@ def assigneCategory():
 				else:
 					print li 
 					f1.write(li+"\n")
+
+	f1.close()
+	f2.close()
+	f3.close()
+	f5.close()
 
 
 def extracctMainurls():
@@ -158,6 +173,11 @@ def extracctMainurls():
 				else:
 					print li 
 					f5.write(li+"\n")
+
+
+		f2.close()
+	
+		f5.close()
 
 		if re.search(r'(?mis)followup\=([^\"]*)\"',data):
 			links1 = re.findall(r'(?mis)followup\=([^\"]*)\"',data)[0]
@@ -204,6 +224,9 @@ def extracctMainurls1(url,num):
 				else:
 					print li 
 					f5.write(li+"\n")
+
+		f5.close()
+
 
 		if re.search(r'(?mis)followup\=([^\"]*)\"',data):
 			links1 = re.findall(r'(?mis)followup\=([^\"]*)\"',data)[0]
@@ -277,6 +300,8 @@ def links_pag(url):
 				else:
 					print li 
 					f5.write(li+"\n")
+
+	f5.close()
 	
 
 def urlsDeatilsExtract(url):
@@ -366,6 +391,10 @@ def deatilsExtract(url):
 		print email
 		f3.write(email+"\n")
 		f4.write("{0},{1},{2},{3},{4},{5},{6},{7}".format(url,url,email,noi,cat,rating,dp,vi)+"\n")
+
+	f3.close()
+	f4.close()
+	#f5.close()
 
 
 	if re.search(r'(?mis)dev\-link\"\shref\=\"[^\?]*\?q\=([^\&]*)\&',data):
