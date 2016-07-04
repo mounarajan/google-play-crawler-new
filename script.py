@@ -2,6 +2,8 @@ import os
 import time
 import re
 from multiprocessing.pool import Pool
+import sys
+sys.setrecursionlimit(1500)
 
 def wget_cookie(url):
 	data = os.popen('wget -qO- --no-cookies --header "Cookie: PREF=ID=1111111111111111:FF=0:LD=en:TM=1436290443:LM=1436416084:GM=1:V=1:S=OAaQWZel2Z7y4x1p; NID=74=GLwB9lf6lZlA5_McRg8SlHSZ8yX1Kgyfg5Ws_8TxuMzk1PxAPTuo8rlQGSgiZMA-qLf30iwlQAtiz5rlitcVTHMOW7rOv9VvEATdigqequ1R7Vw-K2fDKYDXQx890ZeIr3VGCBpT_Y2qnVwkAQbuTeV96zbPOItcst2Vv65f3cWeL32iKowtBN-5plPXu8ryEhE-Y1mnSdfG9pO16fwPNP_xqMHM6nBVPu-7-Wxhd1Sva4RtZKJ7_mrIljfWbnb8pi3udFecv7HroY2L4N4Gg5npQbkJ789IdLmPy0QmZGpsXDEuq4CAat32c_EdmWSrXO0; SID=DQAAALkBAACNQ2_VECWVHHPvzPw5zeCz4i7sCGrZ-EPJnSstSx_bAHKaUK-sGsJz_NsCJarNpJ6qe-5Ts6fGe5c0FypLc0OKOcBiFEuNziFTPoNDFGVREU5RDBPd0s95-SrwlQyJYkIMbtad44X0QdEf52b9jX4sOFQ088XTCd3D5LBEycjM6Opsekt_ftzt1kp52LeDx8-jjBz4MW-_Z7TDlZaSNxoVy3w4IDFfll7gJf3u75Rc8EA78XTLUXh1DVfIq7oYtwGDQ36tZ6rnWHajS-toXtEDdUma1P5CRXr13OZ5pEwLAT8qGFc3q7GKelHa0l5HcSe6izm7BhoaZq_c4qspMOxfbDBBam3vGMOvqrzKBT6U7mIQuIidZYFWn--SePbFSN_JW3bExOGiwbvlagNX0M9LpU7CxdsbdNlxkcwq0466u-rI-eOnauauJWPvSVUuCIE_RxUsuDCw90lGGfT2wNFR5zBnMzC0VLctZFS-HhXjMkrs3-KxcUDYsRYEX2dbU4YV8uV9yg5JfEuufmMMKQNNqQKB-xBEmFScpVMvso9tmt3I7-0T7bXi9NaYcZ6cD0BZXFHJ7zmRQ_MVI6kXUTXZ; HSID=ATVQjd3hxGbpcRAUF; SSID=AZjLdgea1C8pxyeyc; APISID=soBn4_aazTI4Wywn/ADRCh3F_lHo-hPEXx; SAPISID=vhXD61-cvsSQwADN/A8hDmgS1-sePcS7Rp; _ga=GA1.3.1983500809.1437616179; OGPC=4061155-2:; PLAY_ACTIVE_ACCOUNT=ICrt_XL61NBE_S0rhk8RpG0k65e0XwQVdDlvB6kxiQ8=mounarajan@semantics3.com; PLAY_PREFS=CtwDCKrLu9TFChLSAwoCSU4Q8Pn0zZgqGpcDERITFBUWGNQB1QGDAqsC2QPCBMQE4wXlBegF1wbYBt4G3wbdD_APkJWBBpGVgQaSlYEGk5WBBpWVgQaXlYEGpJWBBq2VgQa4lYEGwZWBBsSVgQbFlYEGyJWBBs6VgQbPlYEG0JWBBtSVgQbZlYEG65WBBuyVgQbtlYEG8pWBBviVgQb5lYEGhpaBBoiWgQaMloEGj5aBBpCWgQaeloEGn5aBBqCWgQahloEGppaBBqeWgQaoloEGypeBBu6XgQbvl4EGgZiBBoWYgQa-mIEGiJqBBqObgQatm4EGy5uBBrudgQa8nYEGw52BBsSdgQbFnYEGxp2BBsedgQbdnYEG7J2BBpCegQbon4EG-5-BBoCggQakoIEG9aCBBoShgQaQoYEGwKGBBsuhgQbMoYEGzaGBBu6hgQbxoYEG4qKBBvOigQaxo4EGmqSBBrKkgQbvpIEGhKWBBq-lgQbqpYEGnaaBBsamgQa3p4EGx6eBBo-ogQbNqIEGvKyBBoOugQaZr4EG1q-BBtivgQbjr4EGlbCBBuD8nDEo8Pn0zZgqOiQxYTBmN2Q0Yy1hZDNlLTQ2NTAtYmU3Ny1jYmY1Njk3ZmI2YjQ:S:ANO1ljKOEhExS4ysyg; _gat=1;" %s'% url).read()
@@ -48,17 +50,17 @@ def extractUrls(url):
 			else:
 				print li 
 				f1.write(li+"\n")
-	num = 5
+	num1 = 5
 	f1.close()
 	f2.close()
 	f5.close()
-	extractUrls1("https://play.google.com/store/apps?start={0}&num=5".format(num),num)
+	extractUrls1("https://play.google.com/store/apps?start={0}&num=5".format(num1),num1)
 
-def extractUrls1(url,num):
+def extractUrls1(url,num1):
 	f1 = open('dara.html','w')
 	f2 = open('main_links.txt','a')
 	f5 = open('app_links.txt','a')
-	url = re.sub(r'(?mis)[\s\n]*','',url)
+	url = re.sub(r'(?mis)\n','',url)
 	print url
 	data = wget_sepcial(url)
 	data = str(data)
@@ -92,11 +94,11 @@ def extractUrls1(url,num):
 		check = re.findall(r'(?mis)href\=\"[^\?]*\?start\=(\d+)\"\srel\=\"c',data)[0]
 		print "printiing"
 		check = int(check)
-		print num
-		if (num == check):
+		print num1
+		if (num1 == check):
 			print "yes"
-			num = num + 5
-			extractUrls1("https://play.google.com/store/apps?start={0}&num=5".format(num),num)
+			num1 = num1 + 5
+			extractUrls1("https://play.google.com/store/apps?start={0}&num=5".format(num1),num1)
 		else:
 			pass
 
@@ -707,12 +709,12 @@ def dedupUrls3():
 
 
 
-extractUrls("https://play.google.com/store/apps")
+#extractUrls("https://play.google.com/store/apps")
 dedupUrls()
 
 assigneCategory()
 dedupUrls1()
-#extracctMainurls()
+extracctMainurls()
 #deatilsExtract("https://play.google.com/store/apps/details?id=com.tocaboca.tocakitchen2")
 #urlsDeatilsExtract("https://play.google.com/store/apps/details?id=com.issess.flashplayerpro")
 get_urls1()
