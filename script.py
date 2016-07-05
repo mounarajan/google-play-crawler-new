@@ -136,10 +136,11 @@ def assigneCategory():
 					print li 
 					f1.write(li+"\n")
 
-	f1.close()
-	f2.close()
-	f3.close()
-	f5.close()
+	#f1.close()
+	#f2.close()
+	#f3.close()
+	
+	#f5.close()
 
 
 def extracctMainurls():
@@ -177,9 +178,9 @@ def extracctMainurls():
 					f5.write(li+"\n")
 
 
-		f2.close()
+		#f2.close()
 	
-		f5.close()
+		#f5.close()
 
 		if re.search(r'(?mis)followup\=([^\"]*)\"',data):
 			links1 = re.findall(r'(?mis)followup\=([^\"]*)\"',data)[0]
@@ -693,6 +694,12 @@ def dedupUrls1():
 		with open('main_links1.txt', 'w') as rmdup:
 			rmdup.writelines(set(uniqlines))
 
+def dedupUrlsapp():
+	with open('app_links.txt') as result:
+		uniqlines = set(result.readlines())
+		with open('app_links1.txt', 'w') as rmdup:
+			rmdup.writelines(set(uniqlines))
+
 def dedupUrls2():
 	with open('crawled_email1') as result:
 		uniqlines = set(result.readlines())
@@ -709,16 +716,17 @@ def dedupUrls3():
 
 
 
-#extractUrls("https://play.google.com/store/apps")
+extractUrls("https://play.google.com/store/apps")
 dedupUrls()
 
-assigneCategory()
-dedupUrls1()
-extracctMainurls()
+##assigneCategory()
+##dedupUrls1()
+##extracctMainurls()
 #deatilsExtract("https://play.google.com/store/apps/details?id=com.tocaboca.tocakitchen2")
 #urlsDeatilsExtract("https://play.google.com/store/apps/details?id=com.issess.flashplayerpro")
 get_urls1()
 #dedupUrls2()
+dedupUrlsapp()
 get_data()
 #dedupUrls3()
 
